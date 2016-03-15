@@ -1,0 +1,9 @@
+nmap scan report for 192.168.1.150
+host is up (0.051s latency).
+port      state  service        version
+80/tcp    closed http
+8080/tcp  closed http-proxy
+8443/tcp  closed https-alt
+8888/tcp  closed sun-answerbook
+18080/tcp closed unknown
+mac address: 38:59:f9:dd:81:37 (hon hai precision ind.)

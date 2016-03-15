@@ -1,0 +1,107 @@
+starting nmap 7.01 ( https://nmap.org ) at 2016-03-07 14:41 ?d1ú±ê×?ê±??
+nmap scan report for 192.168.1.1
+host is up (0.0019s latency).
+port      state  service        version
+80/tcp    open   http           tp-link httpd/1.0
+8080/tcp  closed http-proxy
+8443/tcp  closed https-alt
+8888/tcp  closed sun-answerbook
+18080/tcp closed unknown
+1 service unrecognized despite returning data. if you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+sf-port80-tcp:v=7.01%i=7%d=3/7%time=56dd22a8%p=i686-pc-windows-windows%r(g
+sf:etrequest,3453,"http/1\.1\x20200\x20ok\r\nserver:\x20tp-link\x20httpd/1
+sf:\.0\r\nconnection:\x20close\r\nset-cookie:\x20cookie=c0a801291512a8f4;\
+sf:x20path=/;\x20maxage=9999;\x20version=1\r\ncontent-type:\x20text/html\r
+sf:\n\r\n<script\x20language=javascript>\nvar\x20logoninfo\x20=\x20new\x20
+sf:array\(\n0,\n\"\",\n\"\",\n\"20150309\",\n0,0\x20\);\n</script>\n<!--<t
+sf:p_c_tag>-->\r\n<html>\r\n\x20\x20\x20\x20<head>\r\n\x20\x20\x20\x20\x20
+sf:\x20\x20\x20<meta\x20http-equiv=content-type\x20content=\"text/html;\x2
+sf:0charset=gb2312\">\r\n\x20\x20\x20\x20\x20\x20\x20\x20<meta\x20http-equ
+sf:iv=\"pragma\"\x20content=\"no-cache\">\r\n\x20\x20\x20\x20\x20\x20\x20\
+sf:x20<meta\x20http-equiv=\"cache-control\"\x20content=\"no-cache\">\r\n\x
+sf:20\x20\x20\x20\x20\x20\x20\x20<meta\x20http-equiv=\"expires\"\x20conten
+sf:t=\"0\">\r\n\r\n<script\x20language=\"javascript\">\r\n\r\nif\x20\(wind
+sf:ow\.top!=window\.self\)\x20\r\n{\r\nwindow\.top\.location=\"\.\./logon/
+sf:logon\.htm\"\r\n}\r\n\r\nvar\x20ctlfocusflag\x20=\x20false;/\*text\x20f
+sf:lag\*/\r\nvar\x20timeoutflag\x20=\x20false;\r\n\r\nfunction\x20accverif
+sf:y\(accstr\)\r\n{\r\n\x20\x20\x20\x20//\xbc\xec\xb2\xe9\xd5\xca\xba\xc5\
+sf:xba\xcf\xb7\xa8\xd0\xd4\r\n\x20\x20\x20\x20var\x20pattern\x20=\x20/\^\[
+sf:0-9a-za-z-_@\.\]{1,50}\$/;\r\n\x20\x20\x20\x20var\x20flag;\r\n\x20\x20\
+sf:x20\x20\r\n\x20\x20\x20\x20var\x20alertflag;/\*add\x20by\x20whf,2009-02
+sf:-06_08-33\*/\r\n\x20\x20\x20\x20if\(t")%r(fourohfourrequest,11d6,"http/
+sf:1\.1\x20200\x20ok\r\nserver:\x20tp-link\x20httpd/1\.0\r\nconnection:\x2
+sf:0close\r\ncontent-type:\x20text/html\r\n\r\n<script\x20language=javascr
+sf:ipt>\nvar\x20logoninfo\x20=\x20new\x20array\(\n0,\n\"\",\n\"\",\n\"2015
+sf:0309\",\n0,0\x20\);\n</script>\n<!--<tp_c_tag>-->\r\n<html>\r\n\x20\x20
+sf:\x20\x20<head>\r\n\x20\x20\x20\x20\x20\x20\x20\x20<meta\x20http-equiv=c
+sf:ontent-type\x20content=\"text/html;\x20charset=gb2312\">\r\n\x20\x20\x2
+sf:0\x20\x20\x20\x20\x20<meta\x20http-equiv=\"pragma\"\x20content=\"no-cac
+sf:he\">\r\n\x20\x20\x20\x20\x20\x20\x20\x20<meta\x20http-equiv=\"cache-co
+sf:ntrol\"\x20content=\"no-cache\">\r\n\x20\x20\x20\x20\x20\x20\x20\x20<me
+sf:ta\x20http-equiv=\"expires\"\x20content=\"0\">\r\n\r\n<script\x20langua
+sf:ge=\"javascript\">\r\n\r\nif\x20\(window\.top!=window\.self\)\x20\r\n{\
+sf:r\nwindow\.top\.location=\"\.\./logon/logon\.htm\"\r\n}\r\n\r\nvar\x20c
+sf:tlfocusflag\x20=\x20false;/\*text\x20flag\*/\r\nvar\x20timeoutflag\x20=
+sf:\x20false;\r\n\r\nfunction\x20accverify\(accstr\)\r\n{\r\n\x20\x20\x20\
+sf:x20//\xbc\xec\xb2\xe9\xd5\xca\xba\xc5\xba\xcf\xb7\xa8\xd0\xd4\r\n\x20\x
+sf:20\x20\x20var\x20pattern\x20=\x20/\^\[0-9a-za-z-_@\.\]{1,50}\$/;\r\n\x2
+sf:0\x20\x20\x20var\x20flag;\r\n\x20\x20\x20\x20\r\n\x20\x20\x20\x20var\x2
+sf:0alertflag;/\*add\x20by\x20whf,2009-02-06_08-33\*/\r\n\x20\x20\x20\x20i
+sf:f\(typeof\x20arguments\[1\]\x20==\x20\"undefined\"\x20\|\|\x20arguments
+sf:\[1\]\x20==\x20true\)\x20alertflag\x20");
+mac address: 88:25:93:6c:d0:d1 (tp-link technologies)
+
+nmap scan report for 192.168.1.40
+host is up (0.0081s latency).
+port      state    service        version
+80/tcp    filtered http
+8080/tcp  open     http           apache tomcat/coyote jsp engine 1.1
+8443/tcp  filtered https-alt
+8888/tcp  filtered sun-answerbook
+18080/tcp filtered unknown
+mac address: 44:a8:42:f8:4f:a8 (dell)
+
+nmap scan report for 192.168.1.150
+host is up (0.051s latency).
+port      state  service        version
+80/tcp    closed http
+8080/tcp  closed http-proxy
+8443/tcp  closed https-alt
+8888/tcp  closed sun-answerbook
+18080/tcp closed unknown
+mac address: 38:59:f9:dd:81:37 (hon hai precision ind.)
+
+nmap scan report for 192.168.1.151
+host is up (0.089s latency).
+port      state    service        version
+80/tcp    filtered http
+8080/tcp  filtered http-proxy
+8443/tcp  filtered https-alt
+8888/tcp  filtered sun-answerbook
+18080/tcp filtered unknown
+mac address: d0:7e:35:b9:1b:3a (intel corporate)
+
+nmap scan report for 192.168.1.153
+host is up (0.043s latency).
+port      state  service        version
+80/tcp    closed http
+8080/tcp  closed http-proxy
+8443/tcp  closed https-alt
+8888/tcp  closed sun-answerbook
+18080/tcp closed unknown
+mac address: b4:0b:44:29:7d:66 (smartisan technology)
+
+skipping syn stealth scan against 192.168.1.41 because windows does not support scanning your own machine (localhost) this way.
+nmap scan report for 192.168.1.41
+host is up.
+port      state   service        version
+80/tcp    unknown http
+8080/tcp  unknown http-proxy
+8443/tcp  unknown https-alt
+8888/tcp  unknown sun-answerbook
+18080/tcp unknown unknown
+
+service detection performed. please report any incorrect results at https://nmap.org/submit/ .
+nmap done: 255 ip addresses (6 hosts up) scanned in 125.10 seconds
+=========
+消耗时间：125秒
