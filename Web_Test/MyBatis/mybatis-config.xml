@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 文件序言：用于申明xml文件的版本号和编码方式，这行描述必须要顶格写，不然就会报错 -->
+<!-- dtd文档申明，用于验证文档正确性 -->
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- 配置文件引入 -->
+	<properties resource="database.properties" />
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<!-- 配置信息调用 -->
+				<property name="driver" value="${mysql.driver}" />
+				<property name="url" value="${mysql.url}" />
+				<property name="username" value="${mysql.user}" />
+				<property name="password" value="${mysql.pass}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="myself/mybatis/learning/sql/BlogMapper.xml" />
+	</mappers>
+</configuration>
