@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<properties resource="datasource.properties" />
+
+	<typeAliases>
+		<typeAlias type="myself.mybatis.domain.User" alias="_User" />
+		<typeAlias type="myself.mybatis.common.interceptor.Page" alias="page" />
+	</typeAliases>
+
+	<!-- 配置mybatis拦截器 -->
+	<plugins>
+		<plugin interceptor="myself.mybatis.common.interceptor.PageInterceptor">
+			<!-- 数据库类型 oracle/mysql -->
+<!-- 			<property name="databaseType" value="mysql" /> -->
+			<property name="databaseType" value="oracle" />
+		</plugin>
+	</plugins>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<!-- 配置数据库连接信息 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${user}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+		<!-- 注册userMapper.xml文件， userMapper.xml位于me.gacl.mapping这个包下，所以resource写成me/gacl/mapping/userMapper.xml -->
+		<mapper resource="myself/mybatis/mapping/userMapper.xml" />
+		<mapper class="myself.mybatis.annotation.UserMapperAnno" />
+	</mappers>
+
+</configuration>

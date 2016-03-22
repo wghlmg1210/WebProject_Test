@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                http://www.springframework.org/schema/context
+                 http://www.springframework.org/schema/context/spring-context-3.2.xsd
+                http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+
+
+	<!-- 加载JDBC配置文件 -->
+	<context:property-placeholder location="classpath:datasource.properties"
+		ignore-unresolvable="true" />
+
+	<!-- 指定数据源 -->
+
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName">
+			<value>${jdbc.driverClassName}</value>
+		</property>
+		<property name="url">
+			<value>${jdbc.url}</value>
+		</property>
+		<property name="username">
+			<value>${jdbc.username}</value>
+		</property>
+		<property name="password">
+			<value>${jdbc.password}</value>
+		</property>
+	</bean>
+
+
+	<!-- 开启自动注入 -->
+	<context:annotation-config />
+
+	<!-- 开启自动扫描，在指定的路劲及子路径下扫描，将扫描到的的bean 注册到spring的bean中 -->
+	<context:component-scan base-package="com.inspur.mybatisInter" />
+
+
+	<!-- 在使用mybatis时 spring使用sqlsessionFactoryBean 来管理mybatis的sqlsessionFactory -->
+	<!-- 创建sqlsessionFactory 并指定数据源 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+	</bean>
+
+	<!-- 创建数据映射器,映射器必须是接口 -->
+	<!-- 指定映射器接口，以及sqlsessionFactory -->
+	<bean id="blogMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.inspur.mybatis.BlogMapper" />
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<!-- 业务实例，指定映射器 -->
+	<bean id="blogMpperImp" class="com.inspur.mybatis.BlogServiceImp">
+		<property name="blogMapper" ref="blogMapper" />
+	</bean>
+</beans>

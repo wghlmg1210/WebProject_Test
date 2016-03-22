@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名，这样就能够保证namespace的值是唯一的 
+	例如namespace="me.gacl.mapping.userMapper"就是me.gacl.mapping(包名)+userMapper(userMapper.xml文件去除后缀) -->
+
+<mapper namespace="myself.mybatis.mapper.UserMapper">
+
+	<resultMap id="BaseResultMap" type="myself.mybatis.domain.User">
+		<id column="USER_ID" jdbcType="BIGINT" property="userId" />
+		<result column="USERNAME" jdbcType="VARCHAR" property="username" />
+		<result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+		<result column="NICKNAME" jdbcType="VARCHAR" property="nickname" />
+		<result column="PHONENUM" jdbcType="VARCHAR" property="phonenum" />
+		<result column="EMAIL" jdbcType="VARCHAR" property="email" />
+		<result column="STATE" jdbcType="BIGINT" property="state" />
+		<result column="PASSWORD_MD5" jdbcType="VARCHAR" property="passwordMd5" />
+		<result column="CREATETIME" jdbcType="DATE" property="createtime" />
+		<result column="UPDATETIME" jdbcType="DATE" property="updatetime" />
+		<result column="UPDATE_USER_ID" jdbcType="BIGINT" property="updateUserId" />
+		<result column="LAST_LOGIN_TIME" jdbcType="DATE" property="lastLoginTime" />
+		<result column="LAST_LOGIN_IP" jdbcType="VARCHAR" property="lastLoginIp" />
+		<result column="LAST_ROLE_ID" jdbcType="BIGINT" property="lastRoleId" />
+		<result column="ORGNO" jdbcType="BIGINT" property="orgno" />
+		<result column="ORGNANME" jdbcType="VARCHAR" property="orgname" />
+	</resultMap>
+
+	<!-- 在select标签中编写查询的SQL语句， 设置select标签的id属性为getUser，id属性值必须是唯一的，不能够重复 使用parameterType属性指明查询时使用的参数类型，resultType属性指明查询返回的结果集类型 
+		resultType="me.gacl.domain.User"就表示将查询结果封装成一个User类的对象返回 User类就是users表所对应的实体类 -->
+	<!-- 根据id查询得到一个user对象 -->
+
+	<select id="getUser" parameterType="int" resultType="_User">
+		select *
+		from users where id=#{id}
+	</select>
+
+	<!-- 创建用户(Create) -->
+	<insert id="addUser" parameterType="_User">
+		insert into users(name,age)
+		values(#{name},#{age})
+	</insert>
+
+	<!-- 删除用户(Remove) -->
+	<delete id="deleteUser" parameterType="int">
+		delete from users where
+		id=#{id}
+	</delete>
+
+	<!-- 修改用户(Update) -->
+	<update id="updateUser" parameterType="_User">
+		update users set
+		name=#{name},age=#{age} where id=#{id}
+	</update>
+
+	<!-- 查询全部用户 -->
+	<select id="findUserPage" resultType="_User" parameterType="page">
+		select * from users
+	</select>
+	
+	<select id="findUserPage1" resultType="_User">
+		select * from users where age = #{0} order by ${param2.sortColumn} ${param2.sort}
+	</select>
+	
+<!-- 	<select id="findUser" parameterType="java.lang.String" resultType="_User"> -->
+<!-- 		select * from users order by ${name} -->
+<!-- 	</select> -->
+
+	<select id="findUser" parameterType="java.util.Map" resultType="_User">
+		select * from users order by ${page.sortColumn} ${page.sort}
+	</select>
+	
+	<select id="findLike" resultType="_User">
+		select * from users where 
+		<if test="name!=null">  
+            NAME like  '%${name}%'
+        </if>  
+	</select>
+	<select id="getUserPager" parameterType="myself.mybatis.common.interceptor.Page" resultMap="BaseResultMap">
+		SELECT us.user_id, us.userName, us.password, us.nickName, us.email,
+		       us.phoneNum, us.state, us.last_login_ip, us.last_login_time,
+		       us.createTime, org.orgName, org.orgNo
+		  FROM tbl_user us
+		  left join tbl_organization org
+		    on us.orgno = org.orgno
+	    <if test="t.roleId != null and t.roleId != 0">
+			left join system_user_role ur on us.user_id = ur.user_id
+		</if>
+		 where 1=1
+		<if test="t.roleId != null and t.roleId != 0">
+			and ur.role_id = #{t.roleId,jdbcType=BIGINT}
+		</if>
+		<if test="t.username != null and t.username != ''">
+			and us.username like CONCAT('%',#{t.username,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="t.email != null and t.email != ''">
+			and us.email like CONCAT('%',#{t.email,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="t.phonenum != null and t.phonenum != ''">
+			and us.phonenum like '%'||#{t.phonenum}||'%'
+		</if>
+		<if test="t.nickname != null and t.nickname != ''">
+			and us.nickname like #{t.nickname,jdbcType=VARCHAR}
+		</if>
+		 order by ${sortColumn} ${sort}
+	</select>
+	
+</mapper>
