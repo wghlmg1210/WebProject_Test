@@ -33,4 +33,13 @@
 		<url-pattern>/main.html</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>cookieTest</servlet-name>
+		<servlet-class>myself.servlet.session$cookies.CookiesServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>cookieTest</servlet-name>
+		<url-pattern>/cookieTest</url-pattern>
+	</servlet-mapping>
+
 </web-app>
