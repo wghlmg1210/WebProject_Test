@@ -1,6 +1,5 @@
 /.settings
-/.classpath
 /.mymetadata
-/.project
+/.tern-project
 /WebRoot/WEB-INF/classes
 /WebRoot/WEB-INF/classes/*
