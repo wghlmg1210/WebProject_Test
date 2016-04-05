@@ -3,20 +3,34 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
 	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
-	
-	<display-name></display-name>
-	
+
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
-	
+
+	<!-- spring配置 -->
+	<!-- <context-param> <param-name>contextConfigLocation</param-name> <param-value>/WEB-INF/xyz.xml</param-value> 
+		</context-param> <listener> <listener-class>org.springframework.web.context.ContextLoaderListener 
+		</listener-class> </listener> -->
+
+	<!-- filter -->
+	<!-- <filter> <filter-name>authentication</filter-name> <filter-class></filter-class> 
+		<init-param> <param-name>username</param-name> <param-value>huang</param-value> 
+		</init-param> </filter> <filter-mapping> <filter-name>authentication</filter-name> 
+		<url-pattern></url-pattern> </filter-mapping> -->
+
 	<servlet>
 		<servlet-name>mainServlet</servlet-name>
-		<servlet-class>myself.servlet.action.MainServlet</servlet-class>
+		<servlet-class>myself.servlet.MainServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>mainServlet</servlet-name>
-		<url-pattern>main.action</url-pattern>
+		<!-- A string beginning with a ‘/’ character and ending with a ‘/*’ suffix is used for path mapping. 
+			 A string beginning with a ‘*.’ prefix is used as an extension mapping. 
+			 A string containing only the ’/’ character indicates the "default" servlet of the application. 
+			 In this case the servlet path is the request URI minus the context path and the path info is null. 
+			 All other strings are used for exact matches only. -->
+		<url-pattern>/main.html</url-pattern>
 	</servlet-mapping>
-	
+
 </web-app>

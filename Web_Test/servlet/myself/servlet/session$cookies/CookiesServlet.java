@@ -1,4 +1,4 @@
-package myself.servlet.action;
+package myself.servlet.session$cookies;
 
 import java.io.IOException;
 
@@ -9,35 +9,39 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * 用于测试 cookies
  * 
- * @author Mr.Huang
- * 
+ * @author Administrator
+ *
  */
-public class MainServlet extends HttpServlet {
+public class CookiesServlet extends HttpServlet {
 
-	private static final long serialVersionUID = 2707665498350000025L;
+	private static final long serialVersionUID = 3722309172304013656L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-//		HttpSession session = req.getSession();
-//		session.invalidate();
+		req.getServletContext();
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		super.doPost(req, resp);
-	}
-
-	@Override
-	public void init(ServletConfig config) throws ServletException {
-		super.init(config);
 	}
 
 	@Override
 	public void destroy() {
-		super.destroy();
+		System.out.println("destroy()...");
+	}
+
+	@Override
+	public void init() throws ServletException {
+		System.out.println("init()...");
+	}
+
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		System.out.println("init(config)...");
 	}
 
 }
